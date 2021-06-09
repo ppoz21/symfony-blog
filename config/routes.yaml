@@ -1,3 +1,10 @@
-#index:
-#    path: /
-#    controller: App\Controller\DefaultController::index
+index:
+    path: /
+    controller: App\Controller\MainController::homepage
+
+category_page:
+    path: /kategoria/{slug}-{id}
+    controller: App\Controller\CategoryController::categoryPage
+    requirements:
+        id: \d+
+        slug: .*
