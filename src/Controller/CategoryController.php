@@ -39,6 +39,8 @@ class CategoryController extends AbstractController
             return new RedirectResponse($this->generateUrl('category_page', ['id' => $id, 'slug' => $category->getSlug()]));
         }
 
+
+        // TODO: Dodać render stronki z przekazaną kategorią :)
     }
 
 }
