@@ -41,6 +41,10 @@ class CategoryController extends AbstractController
 
 
         // TODO: Dodać render stronki z przekazaną kategorią :)
+        return $this->render('pages/category/category.html.twig', [
+            'category_name' => $category->getName()
+        ]);
+
     }
 
 }
