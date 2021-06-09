@@ -3,38 +3,32 @@
 namespace App\Controller;
 
 use App\Entity\Category;
+use App\Entity\Post;
 use App\Form\CategoryType;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
+use Twig\Environment;
 
 class MainController extends AbstractController
 {
     private EntityManagerInterface $em;
+    private Environment $twig;
 
-    public function __construct(EntityManagerInterface $em)
+    public function __construct(EntityManagerInterface $em, Environment $twig)
     {
         $this->em = $em;
+        $this->twig = $twig;
     }
 
     public function homepage(Request $request): Response
     {
-        $category = new Category();
+        /** @var Post[] $posts */
+        $posts = $this->em->getRepository(Post::class)->findBy([], ['addDate'=>'DESC'], 5);
 
-        $form = $this->createForm(CategoryType::class, $category);
-
-        $form->handleRequest($request);
-
-        if ($form->isSubmitted() && $form->isValid())
-        {
-            $this->em->persist($category);
-            $this->em->flush();
-        }
-
-        return $this->render('pages/homepage/index.html.twig', [
-            'controller_name' => 'MainController',
-            'form' => $form->createView()
-        ]);
+        return new Response($this->twig->render('pages/homepage/index.html.twig', [
+            'posts' => $posts
+        ]));
     }
 }

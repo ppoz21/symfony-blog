@@ -1,0 +1,50 @@
+{
+  "name": "blog",
+  "version": "1.0.0",
+  "description": "Simple Blog in Symfony",
+  "main": "js/main.js",
+  "scripts": {
+    "dev": "webpack --mode development --watch",
+    "build": "webpack --mode production --watch"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ppoz21/symfony-blog.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ppoz21/symfony-blog/issues"
+  },
+  "homepage": "https://github.com/ppoz21/symfony-blog#readme",
+  "devDependencies": {
+    "@babel/core": "^7.14.0",
+    "@babel/plugin-proposal-class-properties": "^7.13.0",
+    "@babel/preset-env": "^7.14.1",
+    "autoprefixer": "^10.2.5",
+    "babel-core": "^6.26.3",
+    "babel-loader": "^8.2.2",
+    "babel-polyfill": "^6.26.0",
+    "babel-preset-env": "^1.7.0",
+    "clean-webpack-plugin": "^4.0.0-alpha.0",
+    "css-loader": "^5.2.4",
+    "cssnano": "^5.0.2",
+    "mini-css-extract-plugin": "^1.6.0",
+    "node-sass": "^6.0.0",
+    "postcss-loader": "^5.2.0",
+    "sass-loader": "^11.1.0",
+    "style-loader": "^2.0.0",
+    "webpack": "^5.37.0",
+    "webpack-cli": "^4.7.0",
+    "webpack-notifier": "^1.13.0"
+  },
+  "dependencies": {
+    "jquery": "^3.6.0",
+    "jquery-inputmask": "^1.0.1",
+    "jquery-validation": "^1.19.3",
+    "popper.js": "^1.16.1",
+    "requirejs": "^2.3.6",
+    "select2": "^4.1.0-rc.0",
+    "sweetalert2": "latest"
+  }
+}

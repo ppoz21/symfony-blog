@@ -2,9 +2,19 @@ index:
     path: /
     controller: App\Controller\MainController::homepage
 
+
+# Categories
 category_page:
-    path: /kategoria/{slug}-{id}
+    path: /kategoria/{slug}-k{id}
     controller: App\Controller\CategoryController::categoryPage
+    requirements:
+        id: \d+
+        slug: .*
+
+# Posts
+post_page:
+    path: /wpis/{slug}-w{id}
+    controller: App\Controller\PostController::postPage
     requirements:
         id: \d+
         slug: .*
