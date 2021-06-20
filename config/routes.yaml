@@ -22,3 +22,9 @@ post_page:
     requirements:
         id: \d+
         slug: .*
+
+# Static
+
+contact:
+    path: /kontakt
+    controller: App\Controller\ContactController::contact

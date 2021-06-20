@@ -1,0 +1,59 @@
+{% extends 'layout/main-layout.html.twig' %}
+
+{% block title %}Kontakt {{ parent() }}{% endblock %}
+
+{% block header %}
+    <header class="masthead" style="background-image: url({{ asset('images/contact-bg.jpg') }})">
+        <div class="container position-relative px-4 px-lg-5">
+            <div class="row gx-4 gx-lg-5 justify-content-center">
+                <div class="col-md-10 col-lg-8 col-xl-7">
+                    <div class="page-heading">
+                        <h1>Napisz do nas</h1>
+                        <span class="subheading">Masz pytania? My mamy odpowiedzi.</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+{% endblock %}
+
+{% block content %}
+    <main class="mb-4">
+        <div class="container px-4 px-lg-5">
+            <div class="row gx-4 gx-lg-5 justify-content-center">
+                <div class="col-md-10 col-lg-8 col-xl-7">
+                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Amet animi autem, consectetur ducimus earum esse et, eveniet explicabo hic, illum iure laudantium minus officiis optio possimus quam ratione saepe sunt?</p>
+                    <div class="my-5">
+                        {{ form_start(form) }}
+                        <div class="form-floating">
+                            {{ form_widget(form.name, {'attr': {'class': 'form-control', 'data-validate': 'notblanc'}}) }}
+                            {{ form_label(form.name) }}
+                        </div>
+                        <div class="form-floating">
+                            {{ form_widget(form.email, {'attr': {'class': 'form-control' , 'data-validate': 'email'}}) }}
+                            {{ form_label(form.email) }}
+                        </div>
+                        <div class="form-floating">
+                            {{ form_widget(form.phone, {'attr': {'class': 'form-control', 'data-validate': 'phone'}}) }}
+                            {{ form_label(form.phone) }}
+                        </div>
+                        <div class="form-floating">
+                            {{ form_widget(form.message, {'attr': {'class': 'form-control', 'style': 'height: 12rem;', 'data-validate': 'notblanc'}}) }}
+                            {{ form_label(form.message) }}
+                        </div>
+                        {{ form_widget(form.submit, {'attr': {'class': 'btn btn-primary text-uppercase mt-5'}}) }}
+                        {{ form_end(form) }}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+{% endblock %}
+
+{% block javascripts %}
+    {{ parent() }}
+    <script>
+        window.initContact()
+    </script>
+{% endblock %}
+
