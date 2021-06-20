@@ -11,6 +11,10 @@ category_page:
         id: \d+
         slug: .*
 
+categories_all:
+    path: /kategorie
+    controller: App\Controller\CategoryController::categories
+
 # Posts
 post_page:
     path: /wpis/{slug}-w{id}

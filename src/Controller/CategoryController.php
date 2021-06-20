@@ -5,6 +5,7 @@ namespace App\Controller;
 
 
 use App\Entity\Category;
+use App\Entity\Post;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\RedirectResponse;
@@ -40,8 +41,24 @@ class CategoryController extends AbstractController
         }
 
 
-        return new Response($this->twig->render('pages/category/category.html.twig', [
-            'category_name' => $category->getName()
+        /** @var Post[] $posts */
+        $posts = $this->em->getRepository(Post::class)->findBy(['category' => $category], ['addDate'=>'DESC']);
+
+        return new Response($this->twig->render('pages/homepage/index.html.twig', [
+            'posts' => $posts,
+            'category' => $category
+        ]));
+
+    }
+
+    public function categories(): Response
+    {
+
+        /** @var Category[] $categories */
+        $categories = $this->em->getRepository(Category::class)->findBy(['parent' => null]);
+
+        return new Response($this->twig->render('pages/categories/categories.html.twig', [
+            'categories' => $categories
         ]));
 
     }

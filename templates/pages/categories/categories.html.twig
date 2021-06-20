@@ -1,0 +1,38 @@
+{% extends 'layout/main-layout.html.twig' %}
+
+{% block title %}Kategorie {{ parent() }}{% endblock %}
+
+{% block content %}
+    <div class="container px-4 px-lg-5">
+        <div class="row gx-4 gx-lg-5 justify-content-center">
+            <div class="col-md-10 col-lg-8 col-xl-7">
+                <!-- Kategorie -->
+                {% for category in categories %}
+                    <div class="post-preview">
+                        <a href="{{ path('category_page', {'id': category.id, 'slug': category.slug}) }}">
+                            <h2 class="post-title">{{ category.name }}</h2>
+                            <h5 class="post-subtitle">{{ category.posts | length }} postów</h5>
+                        </a>
+                        <div class="post-meta">
+                            {{ category.description }}
+                            {% if category.subcategories | length > 0 %}
+                                <div class="subcats">
+                                    <hr>
+                                    Podkategorie: <br>
+                                    {% for subcat in category.subcategories %}
+                                        <a href="{{ path('category_page', {'id': subcat.id, 'slug': subcat.slug}) }}">
+                                            <h5 class="post-title">{{ subcat.name }}</h5>
+                                            <h6 class="post-subtitle">{{ subcat.posts | length }} postów</h6>
+                                        </a>
+                                    {% endfor %}
+                                </div>
+                            {% endif %}
+                        </div>
+                    </div>
+                    <!-- Podział-->
+                    <hr class="my-4" />
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+{% endblock %}
